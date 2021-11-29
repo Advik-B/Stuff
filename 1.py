@@ -1,4 +1,6 @@
 import pyglet
+import os
+import random
 from pyglet.window import key
 
 # window = pyglet.window.Window()
@@ -20,6 +22,12 @@ from pyglet.window import key
 #     elif symbol == key.DOWN:
 #         print('down')
 
-music = pyglet.resource.media('assets/music/Wii-music.mp3')
+music_list = os.listdir(os.path.abspath('assets/music'))
+music_plalist = []
+for music in music_list:
+    music_plalist.append('assets/music/'+ music)
+
+
+music = pyglet.resource.media(random.choice(music_plalist))
 music.play()
 pyglet.app.run()
